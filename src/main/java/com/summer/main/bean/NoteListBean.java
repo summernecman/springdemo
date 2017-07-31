@@ -9,7 +9,9 @@ import java.util.ArrayList;
  */
 public class NoteListBean extends BaseBean {
 
-    ArrayList<NoteBean> data;
+    private int size;
+
+    private ArrayList<NoteBean> data;
 
     public ArrayList<NoteBean> getData() {
         return data;
@@ -17,5 +19,13 @@ public class NoteListBean extends BaseBean {
 
     public void setData(ArrayList<NoteBean> data) {
         this.data = data;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }

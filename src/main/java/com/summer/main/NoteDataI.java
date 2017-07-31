@@ -12,4 +12,6 @@ public interface NoteDataI {
     public String addNoteBook(NoteBean bean);
 
     public String addNote(NoteBean bean);
+
+    public String updateData(NoteBean bean);
 }

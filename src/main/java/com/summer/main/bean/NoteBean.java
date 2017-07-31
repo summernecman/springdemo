@@ -11,7 +11,7 @@ public class NoteBean extends BaseBean{
 
     private int parentId;
 
-    private String type;
+    private int type;
 
     private String name;
 
@@ -37,11 +37,11 @@ public class NoteBean extends BaseBean{
         this.parentId = parentId;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 

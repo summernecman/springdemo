@@ -45,4 +45,30 @@ public class Main {
             e.printStackTrace();
         }
     }
+
+    @RequestMapping(value = "/addnote",method = RequestMethod.POST)
+    public void addNote(HttpServletRequest req, HttpServletResponse rep){
+        String str = req.getParameter("data");
+        NoteBean noteBean = GsonUtil.getInstance().fromJson(str,NoteBean.class);
+        System.out.println(str);
+        try {
+            PrintWriter printWriter = rep.getWriter();
+            printWriter.println(noteDataOpe.addNote(noteBean));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping(value = "/updatenote",method = RequestMethod.POST)
+    public void updateNote(HttpServletRequest req, HttpServletResponse rep){
+        String str = req.getParameter("data");
+        NoteBean noteBean = GsonUtil.getInstance().fromJson(str,NoteBean.class);
+        System.out.println(str);
+        try {
+            PrintWriter printWriter = rep.getWriter();
+            printWriter.println(noteDataOpe.updateData(noteBean));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
