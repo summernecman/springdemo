@@ -11,13 +11,13 @@ public class NoteListBean extends BaseBean {
 
     private int size;
 
-    private ArrayList<NoteBean> data;
+    private ArrayList<NoteOrBookBean> data;
 
-    public ArrayList<NoteBean> getData() {
+    public ArrayList<NoteOrBookBean> getData() {
         return data;
     }
 
-    public void setData(ArrayList<NoteBean> data) {
+    public void setData(ArrayList<NoteOrBookBean> data) {
         this.data = data;
     }
 
