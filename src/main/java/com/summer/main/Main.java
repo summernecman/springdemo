@@ -85,7 +85,10 @@ public class Main {
     public void addFiles(HttpServletRequest req, HttpServletResponse rep){
         init(req,rep);
         DiskFileItemFactory factory = new DiskFileItemFactory();
-        File parent = new File("D://file");
+        File parent = new File("c://files");
+        if(!parent.exists()){
+            parent.mkdirs();
+        }
         factory.setRepository(parent);
         factory.setSizeThreshold(1024*1024);
         ServletFileUpload upload = new ServletFileUpload(factory);
@@ -97,8 +100,8 @@ public class Main {
                 File file = new File(parent,list.get(i).getName());
                 if(!file.exists()){
                     file.createNewFile();
+                    list.get(i).write(file);
                 }
-                list.get(i).write(file);
             }
         } catch (FileUploadException e) {
             e.printStackTrace();
