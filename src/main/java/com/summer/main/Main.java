@@ -34,6 +34,22 @@ public class Main {
         try {
             PrintWriter printWriter = rep.getWriter();
             printWriter.println(noteDataOpe.getNoteList(noteOrBookBean.getObjectId()));
+            printWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping(value = "/getnotedetail",method = RequestMethod.POST)
+    public void getNoteDetail(HttpServletRequest req, HttpServletResponse rep){
+        init(req,rep);
+        String str = req.getParameter("data");
+        NoteOrBookBean noteOrBookBean = GsonUtil.getInstance().fromJson(str,NoteOrBookBean.class);
+        System.out.println(str);
+        try {
+            PrintWriter printWriter = rep.getWriter();
+            printWriter.println(noteDataOpe.getNoteDetail(noteOrBookBean.getObjectId()));
+            printWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,6 +64,7 @@ public class Main {
         try {
             PrintWriter printWriter = rep.getWriter();
             printWriter.println(noteDataOpe.addNoteBook(noteOrBookBean));
+            printWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -62,6 +79,7 @@ public class Main {
         try {
             PrintWriter printWriter = rep.getWriter();
             printWriter.println(noteDataOpe.addNote(noteOrBookBean));
+            printWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -76,8 +94,50 @@ public class Main {
         try {
             PrintWriter printWriter = rep.getWriter();
             printWriter.println(noteDataOpe.updateData(noteOrBookBean));
+            printWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+
+    @RequestMapping(value = "/rename",method = RequestMethod.POST)
+    public void updateNoteName(HttpServletRequest req, HttpServletResponse rep){
+        init(req,rep);
+        String str = req.getParameter("data");
+        NoteOrBookBean noteOrBookBean = GsonUtil.getInstance().fromJson(str,NoteOrBookBean.class);
+        System.out.println(str);
+        try {
+            PrintWriter printWriter = rep.getWriter();
+            printWriter.println(noteDataOpe.updateNoteName(noteOrBookBean));
+            printWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    @RequestMapping(value = "/deletenote",method = RequestMethod.POST)
+    public void deleteNote(HttpServletRequest req, HttpServletResponse rep){
+        init(req,rep);
+        String str = req.getParameter("data");
+        NoteOrBookBean noteOrBookBean = GsonUtil.getInstance().fromJson(str,NoteOrBookBean.class);
+        System.out.println(str);
+        try {
+            PrintWriter printWriter = rep.getWriter();
+            printWriter.println(noteDataOpe.deleteNote(noteOrBookBean));
+            printWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(noteOrBookBean.getType()==0){
+            try {
+                PrintWriter printWriter = rep.getWriter();
+                printWriter.println(noteDataOpe.deleteNoteBook(noteOrBookBean));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

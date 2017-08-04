@@ -9,9 +9,13 @@ public interface NoteDataI {
 
     public String getNoteList(int objectId);
 
+    public String getNoteDetail(int objectId);
+
     public String addNoteBook(NoteOrBookBean bean);
 
     public String addNote(NoteOrBookBean bean);
 
     public String updateData(NoteOrBookBean bean);
+
+    public String deleteNote(NoteOrBookBean bean);
 }

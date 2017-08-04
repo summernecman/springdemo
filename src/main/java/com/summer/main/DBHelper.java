@@ -15,18 +15,18 @@ public class DBHelper {
 
     public static DBHelper instance;
 
-    public static DBHelper getInstance(){
-        if(instance==null){
-            instance = new DBHelper();
+    static {
+        try {
+            Class.forName(name);//指定连接类型
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
-        return instance;
     }
 
 
   
     public DBHelper() {
         try {  
-            Class.forName(name);//指定连接类型  
             conn = DriverManager.getConnection(url, user, password);//获取连接
         } catch (Exception e) {
             e.printStackTrace();  
