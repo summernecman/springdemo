@@ -55,23 +55,5 @@
         <jarDirectory url="file://D:/apache-tomcat-9.0.0.M1/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://D:/apache-tomcat-9.0.0.M1/lib/servlet-api.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://D:/apache-tomcat-9.0.0.M1/lib/jsp-api.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
   </component>
 </module>

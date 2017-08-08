@@ -1,6 +1,5 @@
 package com.summer.main;
 
-import com.summer.base.bean.BaseBean;
 import com.summer.main.bean.NoteOrBookBean;
 import com.summer.util.GsonUtil;
 import org.apache.commons.fileupload.FileItem;
@@ -13,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 /**
@@ -99,23 +101,6 @@ public class Main {
             e.printStackTrace();
         }
     }
-
-
-    @RequestMapping(value = "/rename",method = RequestMethod.POST)
-    public void updateNoteName(HttpServletRequest req, HttpServletResponse rep){
-        init(req,rep);
-        String str = req.getParameter("data");
-        NoteOrBookBean noteOrBookBean = GsonUtil.getInstance().fromJson(str,NoteOrBookBean.class);
-        System.out.println(str);
-        try {
-            PrintWriter printWriter = rep.getWriter();
-            printWriter.println(noteDataOpe.updateNoteName(noteOrBookBean));
-            printWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
 
     @RequestMapping(value = "/deletenote",method = RequestMethod.POST)
