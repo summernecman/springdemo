@@ -134,20 +134,35 @@ public class Main {
         if(!parent.exists()){
             parent.mkdirs();
         }
-        factory.setRepository(parent);
+        factory.setRepository(new File("c://temp"));
         factory.setSizeThreshold(1024*1024);
         ServletFileUpload upload = new ServletFileUpload(factory);
+
         try {
             ArrayList<FileItem> list = (ArrayList<FileItem>) upload.parseRequest(req);
             for(int i=0;i<list.size();i++){
                 list.get(i).getInputStream();
 
                 File file = new File(parent,list.get(i).getName());
+                System.out.println(file.getPath());
                 if(!file.exists()){
-                    file.createNewFile();
+                    //file.createNewFile();
                     list.get(i).write(file);
+                    list.get(i).delete();
+
+//                    InputStream is=list.get(i).getInputStream();
+//                    FileOutputStream fos=new FileOutputStream(file);
+//                    byte[] buff=new byte[1024];
+//                    int len=0;
+//                    while((len=is.read(buff))>0){
+//                        fos.write(buff);
+//                    }
+//                    is.close();
+//                    fos.close();
+//                    list.get(i).delete();
                 }
             }
+
         } catch (FileUploadException e) {
             e.printStackTrace();
         } catch (Exception e) {
